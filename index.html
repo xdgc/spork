@@ -2,6 +2,7 @@
 <html>
   <head>
     <title id="title">Spork</title>
+    <meta charset="UTF-8">
   </head>
   <body>
     <style>
@@ -25,9 +26,13 @@
     <div id="html"></div>
     <script>
       function decode(str) {
-        try { return atob(str); }
+        try {
+          const bstr = atob(str);
+          const bytes = Uint8Array.from(binaryString, char => char.charCodeAt(0));
+          return new TextDecoder('utf-8').decode(bytes);
+        }
         catch (e) {
-          if (e instanceof DOMException && e.name === 'InvalidCharacterError') {
+          if (e instanceof DOMException) {
             return str;
           }
           throw e;
