@@ -24,11 +24,20 @@
     <style id="style"></style>
     <div id="html"></div>
     <script>
+      function decode(str) {
+        try { return atob(str); }
+        catch (e) {
+          if (e instanceof DOMException && e.name === 'InvalidCharacterError') {
+            return str;
+          }
+        throw e;
+      }
+
       const params = new URLSearchParams(window.location.search);
       const labels = ["title", "html", "style", "js"];
       for (var i = 0; i < labels.length; i++) {
         const value = decodeURIComponent(params.get(labels[i]) || "");
-        document.getElementById(labels[i]).innerHTML = value;
+        document.getElementById(labels[i]).innerHTML = decode(value);
       }
     </script>
     <script id="html"></script>
