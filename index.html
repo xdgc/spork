@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title id="title">Spork</title>
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* This ensures the body takes at least the full viewport height */
+        font-family: "Inter", sans-serif; /* Using Inter font as per instructions */
+      }
+      .bottom {
+        margin-top: auto; /* Pushes the div to the bottom */
+        text-align: center;
+        width: 100%;
+        padding: 20px; /* Add some padding */
+        background-color: #e0e0e0; /* Slightly darker background */
+        margin-bottom: 10px; /* Some margin from the bottom */
+      }
+    </style>
+    <style id="style"></style>
+    <div id="html"></div>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const labels = ["title", "html", "style", "js"];
+      for (var i = 0; i < labels.length; i++) {
+        const value = decodeURIComponent(params.get(labels[i]) || "");
+        document.getElementById(value).innerHTML = value;
+      }
+    </script>
+    <script id="html"></script>
+    <div id="warning" class="bottom">
+      This site displays whatever it is told to, without any safety considerations. Do
+      not interact with it without independent confirmation of its integrity and
+      purpose.
+    </div>
+  </body>
+</html>
