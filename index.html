@@ -28,7 +28,7 @@
       function decode(str) {
         try {
           const bstr = atob(str);
-          const bytes = Uint8Array.from(binaryString, char => char.charCodeAt(0));
+          const bytes = Uint8Array.from(bstr, char => char.charCodeAt(0));
           return new TextDecoder('utf-8').decode(bytes);
         }
         catch (e) {
