@@ -28,7 +28,7 @@
       const labels = ["title", "html", "style", "js"];
       for (var i = 0; i < labels.length; i++) {
         const value = decodeURIComponent(params.get(labels[i]) || "");
-        document.getElementById(value).innerHTML = value;
+        document.getElementById(labels[i]).innerHTML = value;
       }
     </script>
     <script id="html"></script>
