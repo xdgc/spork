@@ -30,7 +30,8 @@
           if (e instanceof DOMException && e.name === 'InvalidCharacterError') {
             return str;
           }
-        throw e;
+          throw e;
+        }
       }
 
       const params = new URLSearchParams(window.location.search);
